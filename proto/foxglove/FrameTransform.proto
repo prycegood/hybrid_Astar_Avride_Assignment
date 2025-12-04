@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package foxglove;
+
+message FrameTransform {
+  Timestamp timestamp = 1;
+  string parent_frame_id = 2;
+  string child_frame_id = 3;
+  Vector3 translation = 4;
+  Quaternion rotation = 5;
+}
+
+message Timestamp {
+  fixed32 sec = 1;
+  fixed32 nsec = 2;
+}
+
+message Vector3 {
+  double x = 1;
+  double y = 2;
+  double z = 3;
+}
+
+message Quaternion {
+  double x = 1;
+  double y = 2;
+  double z = 3;
+  double w = 4;
+}
+

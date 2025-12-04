@@ -1,0 +1,155 @@
+// Foxglove SceneUpdate schema for 3D visualization
+syntax = "proto3";
+
+package foxglove;
+
+message SceneUpdate {
+  repeated SceneEntityDeletion deletions = 1;
+  repeated SceneEntity entities = 2;
+}
+
+message SceneEntityDeletion {
+  Timestamp timestamp = 1;
+  enum Type {
+    MATCHING_ID = 0;
+    ALL = 1;
+  }
+  Type type = 2;
+  string id = 3;
+}
+
+message SceneEntity {
+  Timestamp timestamp = 1;
+  string frame_id = 2;
+  string id = 3;
+  Duration lifetime = 4;
+  bool frame_locked = 5;
+  repeated KeyValuePair metadata = 6;
+  repeated ArrowPrimitive arrows = 7;
+  repeated CubePrimitive cubes = 8;
+  repeated SpherePrimitive spheres = 9;
+  repeated CylinderPrimitive cylinders = 10;
+  repeated LinePrimitive lines = 11;
+  repeated TriangleListPrimitive triangles = 12;
+  repeated TextPrimitive texts = 13;
+  repeated ModelPrimitive models = 14;
+}
+
+message Timestamp {
+  fixed32 sec = 1;
+  fixed32 nsec = 2;
+}
+
+message Duration {
+  fixed32 sec = 1;
+  fixed32 nsec = 2;
+}
+
+message KeyValuePair {
+  string key = 1;
+  string value = 2;
+}
+
+message Color {
+  double r = 1;
+  double g = 2;
+  double b = 3;
+  double a = 4;
+}
+
+message Vector3 {
+  double x = 1;
+  double y = 2;
+  double z = 3;
+}
+
+message Quaternion {
+  double x = 1;
+  double y = 2;
+  double z = 3;
+  double w = 4;
+}
+
+message Pose {
+  Vector3 position = 1;
+  Quaternion orientation = 2;
+}
+
+message Point3 {
+  double x = 1;
+  double y = 2;
+  double z = 3;
+}
+
+message ArrowPrimitive {
+  Pose pose = 1;
+  double shaft_length = 2;
+  double shaft_diameter = 3;
+  double head_length = 4;
+  double head_diameter = 5;
+  Color color = 6;
+}
+
+message CubePrimitive {
+  Pose pose = 1;
+  Vector3 size = 2;
+  Color color = 3;
+}
+
+message SpherePrimitive {
+  Pose pose = 1;
+  Vector3 size = 2;
+  Color color = 3;
+}
+
+message CylinderPrimitive {
+  Pose pose = 1;
+  Vector3 size = 2;
+  Color bottom_color = 3;
+  Color top_color = 4;
+  double bottom_scale = 5;
+  double top_scale = 6;
+}
+
+message LinePrimitive {
+  enum Type {
+    LINE_STRIP = 0;
+    LINE_LOOP = 1;
+    LINE_LIST = 2;
+  }
+  Type type = 1;
+  Pose pose = 2;
+  double thickness = 3;
+  bool scale_invariant = 4;
+  repeated Point3 points = 5;
+  Color color = 6;
+  repeated Color colors = 7;
+  repeated uint32 indices = 8;
+}
+
+message TriangleListPrimitive {
+  Pose pose = 1;
+  repeated Point3 points = 2;
+  Color color = 3;
+  repeated Color colors = 4;
+  repeated uint32 indices = 5;
+}
+
+message TextPrimitive {
+  Pose pose = 1;
+  bool billboard = 2;
+  double font_size = 3;
+  bool scale_invariant = 4;
+  Color color = 5;
+  string text = 6;
+}
+
+message ModelPrimitive {
+  Pose pose = 1;
+  Vector3 scale = 2;
+  Color color = 3;
+  bool override_color = 4;
+  string url = 5;
+  bytes data = 6;
+  string media_type = 7;
+}
