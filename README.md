@@ -38,7 +38,7 @@ make -j8
 
 ## Visualize
 
-**I used Foxglove Studio so I linked for easy access**
+**I used Foxglove Studio so I linked it for easy access**
 Open `build/visualization.mcap` in [Foxglove Studio](https://foxglove.dev/studio)
 
 **Python (matplotlib):**
