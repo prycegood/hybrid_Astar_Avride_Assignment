@@ -1,5 +1,11 @@
 # Hybrid A* Path Planner Test Assignment
 
+Hi! Everything you need to run and view my work should be in here. I have included the deliverables you asked for: A gitgub repo, an mcap file visualization, and a performance report.
+
+I am excited to hear feedback, and I am looking forward to chatting again soon.
+
+I would be happy to answer any questions!
+
 ## Dependencies
 
 ### macOS
