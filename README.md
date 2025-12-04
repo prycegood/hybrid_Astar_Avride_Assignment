@@ -1,6 +1,4 @@
-# Hybrid A* Path Planner
-
-Path planning for autonomous vehicles using Hybrid A* with path smoothing.
+# Hybrid A* Path Planner Test Assignment
 
 ## Dependencies
 
@@ -28,18 +26,18 @@ make -j8
 
 ```bash
 # From build directory
-./hybrid_astar                # Parking lot scenario
-./hybrid_astar maze           # Maze scenario
+./hybrid_astar simple            
+./hybrid_astar complex
 ```
 
 ## Visualize
+
+**I used Foxglove Studio so I linked for easy access**
+Open `build/visualization.mcap` in [Foxglove Studio](https://foxglove.dev/studio)
 
 **Python (matplotlib):**
 ```bash
 cd ..
 python3 visualize.py build/visualization.json
 ```
-
-**Foxglove Studio:**
-Open `build/visualization.mcap` in [Foxglove Studio](https://foxglove.dev/studio)
 

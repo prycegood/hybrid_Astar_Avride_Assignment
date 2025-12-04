@@ -14,16 +14,14 @@
 | **Time for 100k expansions** | **~2,932 ms** |
 | Nodes per second | ~34,100 |
 
-## Optimizations Used
+## Optimizations
 
-1. **Hash-based state lookup** - `std::unordered_map` with custom hash function for O(1) duplicate state detection
+I used a hash map (`unordered_map`) with a custom hash function for fast state lookups, which lets me check if a state was already visited in O(1) time. For the open set, I used a priority queue so I always expand the most promising node first without having to search through everything.
 
-2. **Priority queue** - `std::priority_queue` with custom comparator for efficient open set management
+Before running the search, I precompute a 2D distance field using Dijkstra's algorithm from the goal. This gives me a better heuristic that accounts for obstacles, helping the search find the goal faster.
 
-3. **Precomputed heuristics** - 2D Dijkstra distance field computed once before search to guide expansion toward goal
+For collision checking, I sample points along the robot's perimeter rather than checking every cell inside the footprint. This cuts down on the number of grid lookups significantly.
 
-4. **Discretized collision checking** - Sample points along robot perimeter rather than checking entire footprint area
+I also limit how much the steering can change between steps, which reduces the branching factor while still producing realistic paths.
 
-5. **Bounded curvature changes** - Limit steering rate to reduce branching factor while maintaining kinematic feasibility
-
-6. **Compiler optimizations** - Built with `-O3 -march=native` flags for maximum performance
+Finally, I compiled with `-O3 -march=native` to get the best performance out of the code.
