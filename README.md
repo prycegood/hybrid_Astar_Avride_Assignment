@@ -1,6 +1,6 @@
 # Hybrid A* Path Planner Test Assignment
 
-Hi! Everything you need to run and view my work should be in here. I have included the deliverables you asked for: A gitgub repo, an mcap file visualization, and a performance report. Please play around with creating and using your own occupancy grid in my main.cpp file. I had a great time with the project!
+Hi! Everything you need to run and view my work should be in here. I have created each deliverable you asked for: A gitgub repo, an mcap file visualization, and a performance report. Please play around with creating and using your own occupancy grid in my main.cpp file. I had a great time with the project!
 
 I am excited to hear feedback, and I am looking forward to chatting again soon.
 
